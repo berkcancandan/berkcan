@@ -1,0 +1,63 @@
+﻿@model Proje5.Models.Kitaplar
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kitap Ekle</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Kitaplar</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Kadi, "Adı:", htmlAttributes: new { @class = "control-label col-md-1" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Kadi, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Kadi, "", new { @class = "text-danger" })
+    </div>
+</div> 
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Kyazar, "Yazarı:", htmlAttributes: new { @class = "control-label col-md-1" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Kyazar, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Kyazar, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Ketiketleri, "Türü:", htmlAttributes: new { @class = "control-label col-md-1" })
+    <div class="col-md-10">
+        @Html.DropDownListFor(model => model.Ketiketleri,
+         new List<SelectListItem>
+{
+new SelectListItem { Value = "Macera" , Text =" Macera" },
+new SelectListItem { Value = "Romantik" , Text = "Romantik" },
+new SelectListItem { Value = "Savaş" , Text = "Savaş" }
+},
+new { @class = "Ketiketleri" })
+        @Html.ValidationMessageFor(model => model.Ketiketleri, "", new { @class = "text-danger" })
+    </div>
+</div>
+  
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Kütüphane Ekle" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Proje5.Models.Kitaplar>
+
+@{
+    ViewBag.Title = "KitapListesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>KitapListesi</h2>
+@using (Html.BeginForm())
+{
+
+    @Html.TextBox("AramaYap") <input type="submit" value="Ara" class="btn btn-primary"/>
+
+}
+<p>
+    @Html.ActionLink("Kitap Ekle Kütüphane", "Create", "KitapEkleme", new { area = "" }, new { @class = "navbar-brand" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kadi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kyazar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ketiketleri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kdurum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kkayitli)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Kadi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Kyazar)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ketiketleri)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Kdurum)
+    </td>
+    @if (Session["adminname"] == null)
+    {
+        <td>
+            @Html.ActionLink("Ödünç Al", "Kiralama", new { Kitapno = item.Kitapno })
+        </td>
+    }
+
+
+
+    @if (Session["username"] == null)
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.Kkayitli)
+        </td>
+        <td>
+
+          
+
+            @Html.ActionLink("Edit", "Edit", new { id = item.Kitapno }) |
+
+            @Html.ActionLink("Sil", "Delete", new { id = item.Kitapno })
+        </td>
+    }
+</tr>
+}
+
+</table>

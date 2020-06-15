@@ -1,0 +1,55 @@
+﻿@model Proje5.Models.Misafir
+
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Profil</h2>
+
+<div>
+    <h4>Misafir</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.Mad, "Adınız:", htmlAttributes: new { @class = "control-label col-md-1" })
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mad)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.Msoyad, "Soyadınız:", htmlAttributes: new { @class = "control-label col-md-1" })
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Msoyad)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.Mid, "Kullanıcı Adınız:", htmlAttributes: new { @class = "control-label col-md-1" })
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mid)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.Msifre, "Şifreniz:", htmlAttributes: new { @class = "control-label col-md-1" })
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Msifre)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Mkitapno)
+            @Html.ActionLink("İade Et", "Kitapiade", new { id = Model.Mkitapno }) |
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Güncelle", "Edit", new { id = Model.Mkayitno }) |
+
+</p>

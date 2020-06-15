@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Proje5.Models.Misafir>
+
+@{
+    ViewBag.Title = "Listele";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listele</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kullanıcı Ekle", "Create","Home") 
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Mad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Msoyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Msifre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mkitapno)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Msoyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Msifre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mkitapno)
+        </td>
+        <td>
+            @Html.ActionLink("Güncelle", "Edit", new { id=item.Mkayitno }) |
+           
+            @Html.ActionLink("Sil", "Delete", new { id=item.Mkayitno })
+        </td>
+    </tr>
+}
+
+</table>

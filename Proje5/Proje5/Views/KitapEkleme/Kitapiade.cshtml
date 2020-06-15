@@ -1,0 +1,51 @@
+﻿@model Proje5.Models.Kitaplar
+
+@{
+    ViewBag.Title = "Kitapiade";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kitap iade etme </h2>
+
+
+<div>
+    <h4>Kitaplar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kadi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kadi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kyazar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kyazar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ketiketleri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ketiketleri)
+        </dd>
+
+   
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="İade Et" class="btn btn-default" /> |
+           
+        </div>
+    }
+</div>
